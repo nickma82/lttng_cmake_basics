@@ -1,5 +1,7 @@
-# lttng_cmake_basics
-lttng-ust integrated with CMake - the basic setup
+# lttng CMake basics
+lttng-ust integrated with CMake - A basic setup
+
+This project should provide a kind of first steps how to, to lttng.
 
 # following the lttng-ust man page
 https://lttng.org/man/3/lttng-ust/
@@ -17,3 +19,6 @@ CMD=./mainToBeTraced SESSION=myConsoleSession; lttng destroy $SESSION;lttng crea
 
 ## further links
 http://lttng.org/docs/#doc-liblttng-ust-cyg-profile
+
+## Building
+To build it, change into a build directory [mkdir build; cd build] setup cmake [cmake ../src] and build it [make]
