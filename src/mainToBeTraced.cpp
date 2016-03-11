@@ -4,25 +4,9 @@
 #define TRACEPOINT_DEFINE
 #include "hello_lttng.h"
 
-void makeFoo() {
-	puts("foo");
-}
 
 
-int main(int argc, char *argv[]) {
-	int x;
-
-	puts("Hello, World!\nPress Enter to continue...");
-
-	/*
-	 * The following getchar() call is only placed here for the purpose
-	 * of this demonstration, for pausing the application in order for
-	 * you to have time to list its events. It's not needed otherwise.
-	 */
-	getchar();
-
-	makeFoo();
-
+void sampleTraceCalls(int argc, char *const *argv) {
 	/*
 	 * A tracepoint() call. Arguments, as defined in hello-tp.h:
 	 *
@@ -37,13 +21,28 @@ int main(int argc, char *argv[]) {
 	 */
 	tracepoint(hello_world, my_first_tracepoint, 23, "hi there!");
 
+	int x;
 	for (x = 0; x < argc; ++x) {
 		tracepoint(hello_world, my_first_tracepoint, x, argv[x]);
 	}
 
-	puts("Quitting now!");
-
 	tracepoint(hello_world, my_first_tracepoint, x * x, "x^2");
+}
+
+int main(int argc, char *argv[]) {
+
+	//puts("Hello, World!\nPress Enter to continue...");
+
+	/*
+	 * The following getchar() call is only placed here for the purpose
+	 * of this demonstration, for pausing the application in order for
+	 * you to have time to list its events. It's not needed otherwise.
+	 */
+	//getchar();
+
+	sampleTraceCalls(argc, argv);
+
+	puts("Quitting now!");
 
 	return 0;
 }
