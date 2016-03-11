@@ -1,6 +1,5 @@
 #undef TRACEPOINT_PROVIDER
-#define TRACEPOINT_PROVIDER hello_world
-
+#define TRACEPOINT_PROVIDER tpProvider
 
 #if !defined(_HELLO_TP_H) || defined(TRACEPOINT_HEADER_MULTI_READ)
 #define _HELLO_TP_H
@@ -9,7 +8,7 @@
 
 TRACEPOINT_EVENT(
 	/* tracepoint provider name */
-	hello_world,
+	tpProvider,
 
 	/* tracepoint/event name */
 	my_first_tracepoint,

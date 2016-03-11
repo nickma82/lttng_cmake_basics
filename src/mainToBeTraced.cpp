@@ -19,14 +19,14 @@ void sampleTraceCalls(int argc, char *const *argv) {
 	 * they are in fact parts of variables created by macros in
 	 * hello-tp.h.
 	 */
-	tracepoint(hello_world, my_first_tracepoint, 23, "hi there!");
+	tracepoint(tpProvider, my_first_tracepoint, 23, "hi there!");
 
 	int x;
 	for (x = 0; x < argc; ++x) {
-		tracepoint(hello_world, my_first_tracepoint, x, argv[x]);
+		tracepoint(tpProvider, my_first_tracepoint, x, argv[x]);
 	}
 
-	tracepoint(hello_world, my_first_tracepoint, x * x, "x^2");
+	tracepoint(tpProvider, my_first_tracepoint, x * x, "x^2");
 }
 
 int main(int argc, char *argv[]) {
