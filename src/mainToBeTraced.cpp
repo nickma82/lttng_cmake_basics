@@ -3,6 +3,7 @@
 #define TRACEPOINT_CREATE_PROBES
 #define TRACEPOINT_DEFINE
 #include "hello_lttng.h"
+#include <lttng/tracef.h>
 
 
 
@@ -30,6 +31,7 @@ void sampleTraceCalls(int argc, char *const *argv) {
 }
 
 int main(int argc, char *argv[]) {
+	tracef("main is up and running %d", 42);
 
 	//puts("Hello, World!\nPress Enter to continue...");
 
