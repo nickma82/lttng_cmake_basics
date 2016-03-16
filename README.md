@@ -14,11 +14,18 @@ lttng start </br>
 \<execute Command> </br>
 lttng stop
 
-One command for everything </br>
+One command cobinig all above </br>
 CMD=./mainToBeTraced SESSION=myConsoleSession; lttng destroy $SESSION;lttng create $SESSION; lttng enable-event -u --tracepoint tpProvider:*; lttng enable-event -u --tracepoint lttng_ust_tracef:*; lttng add-context -u --type pthread_id; lttng start; $CMD; lttng stop; lttng view
 
 ## further links
 http://lttng.org/docs/#doc-liblttng-ust-cyg-profile
+
+## preConditions
+http://lttng.org/docs/#doc-installing-lttng
+
+Debian:
+apt-get install liblttng-ust-dev python3-babeltrace
+
 
 ## Building
 To build it, change into a build directory [mkdir build; cd build] setup cmake [cmake ../src] and build it [make]

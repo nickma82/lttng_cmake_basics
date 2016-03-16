@@ -19,7 +19,8 @@ TRACEPOINT_EVENT(
     ),
 	/* list of fields of eventual event  */
     TP_FIELDS(
-        ctf_string(my_string_field, my_string_arg) //NOTE that there are no commas separating TP_FIELDS
+        //NOTE that there are no commas separating TP_FIELDS
+        ctf_string(my_string_field, my_string_arg)
         ctf_integer(int, my_integer_field, my_integer_arg)
     )
 )

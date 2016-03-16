@@ -1,9 +1,10 @@
-#include <stdio.h>
-
 #define TRACEPOINT_CREATE_PROBES
 #define TRACEPOINT_DEFINE
 #include "hello_lttng.h"
+
 #include <lttng/tracef.h>
+#include <iostream>
+#include "LttngUST_RAII.h"
 
 
 
@@ -13,6 +14,8 @@ void sampleTraceCalls(int argc, char *const *argv) {
 	 *
 	 *     1st: provider name (always)
 	 *     2nd: tracepoint name (always)
+	 *
+	 *    Every element following now is custom defined in hello_lttng.h::TRACEPOINT_EVENT
 	 *     3rd: my_integer_arg (first user-defined argument)
 	 *     4th: my_string_arg (second user-defined argument)
 	 *
@@ -31,21 +34,12 @@ void sampleTraceCalls(int argc, char *const *argv) {
 }
 
 int main(int argc, char *argv[]) {
+	auto prepareLttngEnvironment = LttngUST_RAII(); //Automatically starts and stops lttng
+
 	tracef("main is up and running %d", 42);
-
-	//puts("Hello, World!\nPress Enter to continue...");
-
-	/*
-	 * The following getchar() call is only placed here for the purpose
-	 * of this demonstration, for pausing the application in order for
-	 * you to have time to list its events. It's not needed otherwise.
-	 */
-	//getchar();
-
 	sampleTraceCalls(argc, argv);
 
-	puts("Quitting now!");
-
+	std::cout << "Quitting now!" << std::endl;
 	return 0;
 }
 
